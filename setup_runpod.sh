@@ -18,7 +18,7 @@ set -e
 
 WORKSPACE="/workspace"
 REPO_DIR="$WORKSPACE/Wan2.2"
-VENV="/root/.venv"
+VENV="/workspace/.venv"
 
 # Usa /workspace come TMPDIR: il container / è solo ~5 GB,
 # SAM-2 e flash_attn compilano file temporanei grandi.

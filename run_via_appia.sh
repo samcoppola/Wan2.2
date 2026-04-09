@@ -11,7 +11,7 @@
 set -e
 
 cd /workspace/Wan2.2
-source /root/.venv/bin/activate
+source /workspace/.venv/bin/activate
 
 IMAGE_PATH="./appia_strada.png"
 if [ ! -f "$IMAGE_PATH" ]; then
