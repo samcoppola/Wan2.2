@@ -32,8 +32,8 @@ OFFLOAD_FLAGS=""
 # non resta abbastanza VRAM per le attivazioni a 720P.
 # --offload_model True sposta i layer su CPU tra un forward e l'altro
 # (più lento ma non va OOM). Sempre attivo per questo modello.
-echo "  Attivo offload_model (modello troppo grande per le attivazioni a 720P)"
-OFFLOAD_FLAGS="--offload_model True"
+echo "  Attivo offload_model + t5_cpu + convert_dtype"
+OFFLOAD_FLAGS="--offload_model True --t5_cpu --convert_model_dtype"
 
 # ── Prompt ────────────────────────────────────────────────────────
 # Conciso e focalizzato: Wan2.2 comprende bene i comandi camera motion.
