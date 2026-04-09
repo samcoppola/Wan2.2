@@ -28,10 +28,12 @@ VRAM_GB=$(python -c "import torch; print(int(torch.cuda.get_device_properties(0)
 echo "VRAM disponibile: ~${VRAM_GB} GB"
 
 OFFLOAD_FLAGS=""
-if [ "$VRAM_GB" -lt 75 ]; then
-    echo "  GPU < 75 GB — attivo offload + dtype conversion"
-    OFFLOAD_FLAGS="--offload_model True --convert_model_dtype"
-fi
+# I2V-A14B occupa ~78 GB di pesi: anche su A100 80 GB
+# non resta abbastanza VRAM per le attivazioni a 720P.
+# --offload_model True sposta i layer su CPU tra un forward e l'altro
+# (più lento ma non va OOM). Sempre attivo per questo modello.
+echo "  Attivo offload_model (modello troppo grande per le attivazioni a 720P)"
+OFFLOAD_FLAGS="--offload_model True"
 
 # ── Prompt ────────────────────────────────────────────────────────
 # Conciso e focalizzato: Wan2.2 comprende bene i comandi camera motion.
@@ -54,7 +56,7 @@ python generate.py \
     --size 1280*720 \
     --ckpt_dir ./Wan2.2-I2V-A14B \
     --image "$IMAGE_PATH" \
-    --frame_num 97 \
+    --frame_num 81 \
     --sample_steps 40 \
     --sample_shift 5.0 \
     --sample_solver unipc \
@@ -65,4 +67,4 @@ python generate.py \
 echo ""
 echo "Done!"
 echo "  Video: ./outputs/via_appia_wan22.mp4"
-echo "  Frames: 97 @ 16 fps = ~6 secondi"
+echo "  Frames: 81 @ 16 fps = ~5 secondi"
