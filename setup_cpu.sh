@@ -49,7 +49,7 @@ cd "$REPO_DIR"
 # Il venv completo viene creato dopo su GPU con setup_runpod.sh.
 echo ""
 echo "[2/3] Installo huggingface_hub nel Python di sistema..."
-pip install -q huggingface_hub
+python3 -m pip install -q huggingface_hub
 echo "    OK."
 
 # ── 3. Scarica il modello I2V-A14B (~52 GB) ───────────────────────
@@ -58,7 +58,7 @@ echo "[3/3] Download Wan2.2-I2V-A14B (~52 GB)..."
 echo "      Include: T5 umt5-xxl encoder, VAE, low_noise e high_noise transformers"
 echo ""
 
-python download.py i2v-a14b
+python3 download.py i2v-a14b
 
 # ── Done ──────────────────────────────────────────────────────────
 echo ""
