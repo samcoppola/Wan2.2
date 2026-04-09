@@ -40,7 +40,7 @@ OFFLOAD_FLAGS="--offload_model True --t5_cpu --convert_model_dtype"
 # Mantenerlo sotto 150 parole per il T5 umt5-xxl (512 token limit).
 # Il negative prompt in cinese è applicato automaticamente dal modello.
 
-PROMPT="First-person slow forward walk along the Via Appia Antica, ancient Rome Imperial period. The camera moves steadily forward at eye level along the ancient basalt cobblestone road. The camera gently pans left and right, pausing to observe monumental Roman tombs, mausoleums and funerary monuments with columns, carved reliefs and marble statues lining both sides of the road. A few distant Roman figures in white tunics walk slowly ahead. Sparse vegetation: dry grass, low shrubs and tall Roman umbrella pine trees. Warm golden natural sunlight, soft shadows, slight dusty atmospheric haze. Cinematic depth of field. Ultra-realistic, photorealistic, historically accurate, no modern elements."
+PROMPT="First-person walking view along the Via Appia Antica, ancient Rome Imperial period. The camera moves slowly forward, bobbing gently up and down with natural footstep rhythm. While walking, the camera gradually turns to look right, revealing a monumental Roman tomb with columns and carved reliefs, then smoothly returns to center and turns left to observe another funerary monument with marble statues. Ancient basalt cobblestones underfoot, warm golden sunlight, slight dusty haze, sparse Roman umbrella pine trees in the background. Ultra-realistic, photorealistic, historically accurate, no modern elements."
 
 # ── Parametri massima qualità ─────────────────────────────────────
 # --task i2v-A14B        : modello MoE 14B per I2V
