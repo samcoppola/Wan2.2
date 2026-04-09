@@ -56,7 +56,7 @@ python generate.py \
     --size 1280*720 \
     --ckpt_dir ./Wan2.2-I2V-A14B \
     --image "$IMAGE_PATH" \
-    --frame_num 81 \
+    --frame_num 97 \
     --sample_steps 40 \
     --sample_shift 5.0 \
     --sample_solver unipc \
@@ -67,4 +67,4 @@ python generate.py \
 echo ""
 echo "Done!"
 echo "  Video: ./outputs/via_appia_wan22.mp4"
-echo "  Frames: 81 @ 16 fps = ~5 secondi"
+echo "  Frames: 97 @ 16 fps = ~6 secondi"
