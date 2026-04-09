@@ -83,7 +83,10 @@ else
     SAM2_URL=git+https://github.com/facebookresearch/sam2.git@0e78a118995e66bb27d78518c4bd9a3e95b4e266
     pip install --no-build-isolation "$SAM2_URL" -q
 
-    echo "  Installo flash_attn (compilazione CUDA, ~10 min)..."
+    echo "  Installo flash_attn (wheel pre-compilato, ~1 min)..."
+    # Wheel pre-compilato per cu12 + torch2.5 + Python3.11 — evita compilazione
+    # e il problema cross-device link (TMPDIR su /workspace, pip cache su /root)
+    export PIP_CACHE_DIR="$WORKSPACE/.pip_cache"
     pip install flash_attn --no-build-isolation
 
     touch "$MARKER"
