@@ -32,8 +32,11 @@ OFFLOAD_FLAGS=""
 # non resta abbastanza VRAM per le attivazioni a 720P.
 # --offload_model True sposta i layer su CPU tra un forward e l'altro
 # (più lento ma non va OOM). Sempre attivo per questo modello.
-echo "  Attivo offload_model + t5_cpu + convert_dtype"
-OFFLOAD_FLAGS="--offload_model True --t5_cpu --convert_model_dtype"
+# Combinazione raccomandata dal README per A100 80 GB:
+# --offload_model True --convert_model_dtype  (NO --t5_cpu)
+# --t5_cpu è solo per GPU 24 GB: mette T5 su CPU che è lentissimo su umt5-xxl
+echo "  Flag: --offload_model True --convert_model_dtype"
+OFFLOAD_FLAGS="--offload_model True --convert_model_dtype"
 
 # ── Prompt ────────────────────────────────────────────────────────
 # Conciso e focalizzato: Wan2.2 comprende bene i comandi camera motion.
